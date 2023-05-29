@@ -1,0 +1,7 @@
+<form method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+  
+        <p><input type="text" name="protected_file_allowed_emails" placeholder="Enter emails separated by commas" required></p>
+
+    <button type="submit">Upload</button>
+</form>

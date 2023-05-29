@@ -1,0 +1,11 @@
+{% if error%}
+<h4> {{error}} </h4>
+{% endif %}
+<form method="post" >
+    {% csrf_token %}
+    {{form}}
+    <button type="submit">login</button>
+    <button type="submit"><a class="" style="padding:10px;" href="{%url 'register'%}">register</a></button>
+</form>
+
+

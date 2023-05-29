@@ -1,0 +1,70 @@
+{% extends 'musicshareapp/base/base.html' %}
+{% load static %}
+
+
+
+{%block content%}
+<html>
+	<head>
+	<title> Music sharing Portal</title>
+        
+	</head>
+
+	<body>
+    <h1>Music Files</h1>
+
+    {% if uploaded_music_files %}
+        <h2 style="color:green">Uploaded by you</h2>
+        {%for music_file in uploaded_music_files%}
+        <p style="padding-top: 2px; color: red">Shared by: {{music_file.uploaded_by}}</p>
+        <div class= 'card' style = 'width: 20rem; box-shadow: 0 4px 4px 0 rgba(0,0,0,0.2); transition: 0.3s;'> 
+        <audio class="card-image-top" controls style ="margin: 4px">
+            <source src="{{ music_file.music_file.url }}" type="video/mp4">
+        </audio>
+          <div class="container" style = "padding: 2px 6px;">
+            <h6>{{music_file.title}}-by {{music_file.artist}} </h6>
+            <p>Upload date: {{music_file.upload_date}}</p>
+          </div>
+        </div>
+        {%endfor%}
+    {% endif %}
+
+
+    {% if public_music_files %}
+        <h2 style="color:green">Public shared Music</h2>
+        {%for music_file in public_music_files%}
+        <p style="padding-top: 2px; color: red">Shared by: {{music_file.uploaded_by}}</p>
+        <div class= 'card' style = 'width: 20rem; box-shadow: 0 4px 4px 0 rgba(0,0,0,0.2); transition: 0.3s;'> 
+        <audio class="card-image-top" controls style ="margin: 4px">
+            <source src="{{ music_file.music_file.url }}" type="video/mp4">
+        </audio>
+          <div class="container" style = "padding: 2px 6px;">
+            <h6>{{music_file.title}}-by {{music_file.artist}} </h6>
+            <p>Date: {{music_file.upload_date}}</p>
+          </div>
+        </div>
+        {%endfor%}
+    {% endif %}
+    
+
+    {%if protected_music_files%}
+        <h2 style="color:green">Protected shared Music</h2>
+        {%for music_file in protected_music_files%}
+        <p style="padding-top: 2px; color: red">Shared by: {{music_file.uploaded_by}}</p>
+        <div class= 'card' style = 'width: 20rem; box-shadow: 0 4px 4px 0 rgba(0,0,0,0.2); transition: 0.3s;'> 
+        <audio class="card-image-top" controls style ="margin: 4px">
+            <source src="{{ music_file.music_file.url }}" type="video/mp4">
+        </audio>
+          <div class="container" style = "padding: 2px 6px;">
+            <h6>{{music_file.title}}-by {{music_file.artist}} </h6>
+            Upload date: {{music_file.upload_date}}
+          </div>
+        </div>
+        {%endfor%}
+    {% endif %}
+
+	</body>
+
+</html>
+
+{%endblock%}
